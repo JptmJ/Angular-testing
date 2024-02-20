@@ -1,0 +1,107 @@
+<div style="width: 35%;" class="container mt-5 border p-5">
+    <h2 class="mb-4">Basic Details Form</h2>
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+        <div class=" form-group">
+            <label>Name</label>
+            <input type="text" id="name-test" required class="form-control" formControlName="name"
+                placeholder="Enter your name">
+            <div *ngIf="myForm.get('name')?.touched && myForm.get('name')?.errors?.['required']" class="text-danger">
+                Name is required</div>
+            <div *ngIf="myForm.get('name')?.touched && myForm.get('name')?.errors?.['whitespace']" class="text-danger">
+                Name cannot be empty
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input id="email-test" type="email" required class="form-control" formControlName="email"
+                placeholder="Enter your email">
+            <div *ngIf="myForm.get('email')?.touched && myForm.get('email')?.errors?.['required']" class="text-danger">
+                Email is required</div>
+            <div *ngIf="myForm.get('email')?.touched && myForm.get('email')?.errors?.['email']" class="text-danger">
+                Email is invalid</div>
+
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input id="pass-test" type="password" required class="form-control" formControlName="password"
+                placeholder="Enter your password">
+            <div *ngIf="myForm.get('password')?.touched && myForm.get('password')?.errors?.['required']"
+                class="text-danger">
+                Password is required</div>
+            <div *ngIf="myForm.get('password')?.touched && myForm.get('password')?.errors?.['pattern']"
+                class="text-danger">
+                Password is invalid
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Select Option</label>
+            <select id="select-test" required class="form-control" formControlName="select">
+                <option value="">Select an option</option>
+                <option value="Option 1">Option 1</option>
+                <option value="Option 2">Option 2</option>
+                <option value="Option 3">Option 3</option>
+                <option value="Option 4">Option 4</option>
+                <option value="Option 5">Option 5</option>
+            </select>
+            <div *ngIf="myForm.get('select')?.touched && myForm.get('select')?.errors?.['required']"
+                class="text-danger">
+                Select at least one</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label id="gender-test">Gender</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="male" formControlName="gender"
+                            required>
+                        <label class="form-check-label">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="female"
+                            formControlName="gender" required>
+                        <label class="form-check-label">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="transgender"
+                            formControlName="gender" required>
+                        <label class="form-check-label">Transgender</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="other"
+                            formControlName="gender" required>
+                        <label class="form-check-label">Other</label>
+                    </div>
+                    <div *ngIf="myForm.get('radio')?.touched && myForm.get('radio')?.errors?.['required']"
+                        class="text-danger">
+                        Select at least one</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label id="option-test">Hobby Options</label><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="option1" value="option1"
+                            formControlName="option1">
+                        <label class="form-check-label">Option 1</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="option2" value="option2"
+                            formControlName="option2">
+                        <label class="form-check-label">Option 2</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="option3" value="option3"
+                            formControlName="option3">
+                        <label class="form-check-label">Option 3</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" id="message-test" name="message" rows="3" placeholder="Enter your message"
+                formControlName="message" required></textarea>
+        </div>
+        <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,9 @@
+.form-group {
+    padding: 10px 0;
+}
+
+select {
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
+    appearance: menulist;
+}
